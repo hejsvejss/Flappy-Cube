@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hinder : MonoBehaviour
 {
-    public float speed = 1.86f;
+    public static float speed = 1.86f;
     // Start is called before the first frame update
     void Start()
     {
