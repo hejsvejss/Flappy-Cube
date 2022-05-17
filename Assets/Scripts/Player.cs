@@ -7,14 +7,12 @@ public class Player : MonoBehaviour
     BackgroundScroller scroller;
     AudioSource audio;
     Rigidbody2D rb;
-    Hinder hinder;
     private bool alive = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
         scroller = FindObjectOfType<BackgroundScroller>();
-        hinder = FindObjectOfType<Hinder>();
     }
 
     
@@ -36,7 +34,7 @@ public class Player : MonoBehaviour
         {
             alive = false;
             scroller.scrollSpeed = 0;
-            hinder.speed = 0;
+            Hinder.speed = 0;
         }
     }
 
