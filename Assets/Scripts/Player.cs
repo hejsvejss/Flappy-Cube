@@ -21,8 +21,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && alive)
         {
             rb.velocity = new Vector3(0, 4f, 0);
-            
-                audio.Play();
+
+            audio.Play();
 
             
         }
