@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    BackgroundScroller scroller;
+
     AudioSource audio;
     Rigidbody2D rb;
     timer timer;
@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
-        scroller = FindObjectOfType<BackgroundScroller>();
         timer = FindObjectOfType<timer>();
     }
 
@@ -36,7 +35,7 @@ public class Player : MonoBehaviour
         {
             timer.alive = false;
             alive = false;
-            scroller.scrollSpeed = 0;
+            BackgroundScroller.scrollSpeed = 0;
             Hinder.speed = 0;
         }
     }

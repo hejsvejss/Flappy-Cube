@@ -4,7 +4,7 @@ public class BackgroundScroller : MonoBehaviour
 {
     
     [Range(-5f,5f)]
-    public float scrollSpeed = 2f;
+    public static float scrollSpeed = 2f;
     private float offset;
     private Material mat;
     void Start()
