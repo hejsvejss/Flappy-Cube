@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    BackgroundScroller scroller;
+
     AudioSource audio;
     Rigidbody2D rb;
+    timer timer;
     private bool alive = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
-        scroller = FindObjectOfType<BackgroundScroller>();
+        timer = FindObjectOfType<timer>();
     }
 
     
@@ -21,8 +22,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && alive)
         {
             rb.velocity = new Vector3(0, 4f, 0);
-            
-                audio.Play();
+
+            audio.Play();
 
             
         }
@@ -32,8 +33,9 @@ public class Player : MonoBehaviour
     {
         if(collision.transform.tag == "Barrier")
         {
+            timer.alive = false;
             alive = false;
-            scroller.scrollSpeed = 0;
+            BackgroundScroller.scrollSpeed = 0;
             Hinder.speed = 0;
         }
     }
