@@ -12,10 +12,12 @@ public class Spawner : MonoBehaviour
 
     float timeBetweenSpawn = 0;
 
+    Player player;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class Spawner : MonoBehaviour
 
         timeBetweenSpawn += Time.deltaTime;
 
-        if (timeBetweenSpawn > waitTime)// spawnar en fiende när väntetiden är slut
+        if (timeBetweenSpawn > waitTime && player.playing == true)// spawnar en fiende när väntetiden är slut
         {
             timeBetweenSpawn = 0;
             Instantiate(hinder, transform.position + new Vector3(0, Random.Range(4.5f,9), 0), Quaternion.identity);

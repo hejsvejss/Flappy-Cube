@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    public bool playing = false;
     AudioSource audio;
     Rigidbody2D rb;
     timer timer;
@@ -19,13 +19,17 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Space) && alive)
         {
-            rb.velocity = new Vector3(0, 4f, 0);
-
-            audio.Play();
-
             
+            if (!playing)
+            {
+                playing = true;
+                rb.gravityScale = 1;
+            }
+            rb.velocity = new Vector3(0, 4f, 0);
+            audio.Play();
         }
     }
 
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour
         {
             timer.alive = false;
             alive = false;
+            playing = false;
             BackgroundScroller.scrollSpeed = 0;
             Hinder.speed = 0;
         }
