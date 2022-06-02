@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Barrier
   - End
+  - Hinder
   layers:
   - Default
   - TransparentFX

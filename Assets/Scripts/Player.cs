@@ -8,25 +8,33 @@ public class Player : MonoBehaviour
     AudioSource audio;
     Rigidbody2D rb;
     timer timer;
-    private bool alive = true;
+    [SerializeField]
+    GameObject restartText;
+    [SerializeField]
+    GameObject startText;
+    public bool alive = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
-        timer = FindObjectOfType<timer>();
+
     }
 
-    
+
     void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.Space) && alive)
         {
-            
+            print("hopp");
             if (!playing)
             {
+                startText.SetActive(false);
+                print("start");
                 playing = true;
                 rb.gravityScale = 1;
+                BackgroundScroller.scrollSpeed = 2f;
+                Hinder.speed = 1.86f;
             }
             rb.velocity = new Vector3(0, 4f, 0);
             audio.Play();
@@ -35,9 +43,9 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.tag == "Barrier")
+        if (collision.transform.tag == "Barrier" || collision.transform.tag == "Hinder")
         {
-            timer.alive = false;
+            restartText.SetActive(true);
             alive = false;
             playing = false;
             BackgroundScroller.scrollSpeed = 0;

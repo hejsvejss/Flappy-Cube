@@ -6,7 +6,7 @@ public class timer : MonoBehaviour
 {
     TMPro.TMP_Text uiText;
     public bool alive;
-    float time = 0;
+   public float time = 0;
     Player player;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class timer : MonoBehaviour
     void Update()
     {
         uiText.text = time.ToString("F1");
-        if (alive && player.playing == true)
+        if (player.playing == true)
         {
             time += Time.deltaTime;
         }
